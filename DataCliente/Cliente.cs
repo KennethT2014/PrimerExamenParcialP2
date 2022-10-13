@@ -8,6 +8,11 @@ namespace DataCliente
 {
     public class Cliente
     {
+        public Cliente()
+        {
+
+        }
+
         public int IDCliente { get; set; }
         public string Cedula { get; set; }
         public string PrimerNombre { get; set; }
@@ -19,9 +24,5 @@ namespace DataCliente
         public string Direccion { get; set; }
         public string Telefono { get; set; }
 
-        public Cliente()
-        {
-
-        }
     }
 }

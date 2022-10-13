@@ -53,18 +53,9 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.IDCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SegundoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SegundoApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataCliente = new System.Windows.Forms.DataGridView();
             this.CBDepartamentoBuscar = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -277,6 +268,7 @@
             this.btnCancelar.TabIndex = 25;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnImprimir
             // 
@@ -287,88 +279,15 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataCliente
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDCliente,
-            this.Cedula,
-            this.PrimerNombre,
-            this.SegundoNombre,
-            this.PrimerApellido,
-            this.SegundoApellido,
-            this.Correo,
-            this.Direccion,
-            this.Telefono});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 252);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(1179, 400);
-            this.dataGridView1.TabIndex = 27;
-            // 
-            // IDCliente
-            // 
-            this.IDCliente.HeaderText = "ID Cliente";
-            this.IDCliente.MinimumWidth = 6;
-            this.IDCliente.Name = "IDCliente";
-            this.IDCliente.Width = 125;
-            // 
-            // Cedula
-            // 
-            this.Cedula.HeaderText = "No Cédula";
-            this.Cedula.MinimumWidth = 6;
-            this.Cedula.Name = "Cedula";
-            this.Cedula.Width = 125;
-            // 
-            // PrimerNombre
-            // 
-            this.PrimerNombre.HeaderText = "1er Nombre";
-            this.PrimerNombre.MinimumWidth = 6;
-            this.PrimerNombre.Name = "PrimerNombre";
-            this.PrimerNombre.Width = 125;
-            // 
-            // SegundoNombre
-            // 
-            this.SegundoNombre.HeaderText = "2do Nombre";
-            this.SegundoNombre.MinimumWidth = 6;
-            this.SegundoNombre.Name = "SegundoNombre";
-            this.SegundoNombre.Width = 125;
-            // 
-            // PrimerApellido
-            // 
-            this.PrimerApellido.HeaderText = "1er Apellido";
-            this.PrimerApellido.MinimumWidth = 6;
-            this.PrimerApellido.Name = "PrimerApellido";
-            this.PrimerApellido.Width = 125;
-            // 
-            // SegundoApellido
-            // 
-            this.SegundoApellido.HeaderText = "2do Apellido";
-            this.SegundoApellido.MinimumWidth = 6;
-            this.SegundoApellido.Name = "SegundoApellido";
-            this.SegundoApellido.Width = 125;
-            // 
-            // Correo
-            // 
-            this.Correo.HeaderText = "Correo";
-            this.Correo.MinimumWidth = 6;
-            this.Correo.Name = "Correo";
-            this.Correo.Width = 125;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.MinimumWidth = 6;
-            this.Direccion.Name = "Direccion";
-            this.Direccion.Width = 125;
-            // 
-            // Telefono
-            // 
-            this.Telefono.HeaderText = "Teléfono";
-            this.Telefono.MinimumWidth = 6;
-            this.Telefono.Name = "Telefono";
-            this.Telefono.Width = 125;
+            this.dataCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCliente.Location = new System.Drawing.Point(12, 252);
+            this.dataCliente.Name = "dataCliente";
+            this.dataCliente.RowHeadersWidth = 51;
+            this.dataCliente.RowTemplate.Height = 29;
+            this.dataCliente.Size = new System.Drawing.Size(1179, 400);
+            this.dataCliente.TabIndex = 27;
             // 
             // CBDepartamentoBuscar
             // 
@@ -394,7 +313,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1203, 664);
             this.Controls.Add(this.CBDepartamentoBuscar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataCliente);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBuscar);
@@ -423,7 +342,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,16 +375,7 @@
         private Button btnBuscar;
         private Button btnCancelar;
         private Button btnImprimir;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn IDCliente;
-        private DataGridViewTextBoxColumn Cedula;
-        private DataGridViewTextBoxColumn PrimerNombre;
-        private DataGridViewTextBoxColumn SegundoNombre;
-        private DataGridViewTextBoxColumn PrimerApellido;
-        private DataGridViewTextBoxColumn SegundoApellido;
-        private DataGridViewTextBoxColumn Correo;
-        private DataGridViewTextBoxColumn Direccion;
-        private DataGridViewTextBoxColumn Telefono;
+        private DataGridView dataCliente;
         private ComboBox CBDepartamentoBuscar;
     }
 }

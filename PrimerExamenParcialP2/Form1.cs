@@ -1,4 +1,5 @@
 using DataCliente;
+using System.Data;
 
 namespace PrimerExamenParcialP2
 {
@@ -50,29 +51,84 @@ namespace PrimerExamenParcialP2
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            GuardarProducto();
+            GuardarCliente();
+            CargarLista();
+            MessageBox.Show("Se guardo el registro en Lista", "Información");
         }
 
-        public void GuardarProducto()
+        public void GuardarCliente()
         {
-            Cliente c = new Cliente();
-            c.IDCliente = Convert.ToInt32(txtIDCliente.Text);
-            c.Cedula = Convert.ToString(txtCedula.Text);
-            c.PrimerNombre = Convert.ToString(txtPrimerNombre.Text);
-            c.SegundoNombre = Convert.ToString(txtSegundoNombre.Text);
-            c.PrimerApellido = Convert.ToString(txtPrimerApellido.Text);
-            c.SegundoApellido = Convert.ToString(txtSegundoApellido.Text);
-            c.Correo = Convert.ToString(txtCorreo.Text);
-            c.Departamento = Convert.ToString(CBDepartamento.Text);
-            c.Direccion = Convert.ToString(txtDireccion.Text);
-            c.Telefono = Convert.ToString(txtTelefono.Text);
+            Cliente cliente = new Cliente();
+            cliente.IDCliente = Convert.ToInt32(this.txtIDCliente.Text);
+            cliente.Cedula = this.txtCedula.Text;
+            cliente.PrimerNombre = this.txtPrimerNombre.Text;
+            cliente.SegundoNombre = this.txtSegundoNombre.Text;
+            cliente.PrimerApellido = this.txtPrimerApellido.Text;
+            cliente.SegundoApellido = this.txtSegundoApellido.Text;
+            cliente.Correo = this.txtCorreo.Text;
+            cliente.Departamento = this.CBDepartamento.Text;
+            cliente.Direccion = this.txtDireccion.Text;
+            cliente.Telefono = this.txtTelefono.Text;
 
-            archivo.AddCliente(c);
+            archivo.AddCliente(cliente);
+        }
+
+        public void CargarLista()
+        {
+            this.dataCliente.Columns.Clear();
+            DataTable lista = new DataTable();
+            lista.Columns.Add("Id Cliente");
+            lista.Columns.Add("Cédula");
+            lista.Columns.Add("1er Nombre");
+            lista.Columns.Add("2do Nombre");
+            lista.Columns.Add("1er Apellido");
+            lista.Columns.Add("2do Apellido");
+            lista.Columns.Add("Correo");
+            lista.Columns.Add("Departamento");
+            lista.Columns.Add("Dirección");
+            lista.Columns.Add("Teléfono");
+
+            this.archivo.PrintCliente().ForEach(delegate (Cliente c)
+            {
+                lista.Rows.Add(new Object[]
+                {
+                    c.IDCliente,
+                    c.Cedula,
+                    c.PrimerNombre,
+                    c.SegundoNombre,
+                    c.PrimerApellido,
+                    c.SegundoApellido,
+                    c.Correo,
+                    c.Departamento,
+                    c.Direccion,
+                    c.Telefono
+                });
+            });
+            this.dataCliente.DataSource = lista;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtIDCliente.Enabled = false;
+            txtCedula.Enabled = false;
+            txtPrimerNombre.Enabled = false;
+            txtSegundoNombre.Enabled = false;
+            txtPrimerApellido.Enabled = false;
+            txtSegundoApellido.Enabled = false;
+            txtCorreo.Enabled = false;
+            CBDepartamento.Enabled = false;
+            txtDireccion.Enabled = false;
+            txtTelefono.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnImprimir.Enabled = true;
+            btnBuscar.Enabled = true;
+            CBDepartamentoBuscar.Enabled = true;
         }
     }
 }
